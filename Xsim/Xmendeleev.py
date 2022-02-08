@@ -6,9 +6,9 @@ class Xmendeleev():
     def __init__(self, datafile = None):
         if not datafile:
             if os.name == 'posix':
-                self.datafile = '/home/rosario/xmimsim/xsimspe/mendeleev.dat'
+                self.datafile = '/home/rosario/project/synteticXRF/Xsim/mendeleev.dat'
             else:
-                self.datafile = 'C:\\User\\XRAYLab\\rosario_sim\\xsimspe\\mendeleev.dat'
+                self.datafile = 'C:\\User\\XRAYLab\\rosario_sim\\synteticXRF\\Xsim\\mendeleev.dat'
         else:
             self.datafile = datafile
         if not os.path.exists(self.datafile):

@@ -9,10 +9,10 @@ class XinputFile():
     def __init__(self, input_template = None):
         if os.name == 'posix':
             home = os.getenv("HOME")
-            self.root_dir = f'{home}/xmimsim'
+            self.root_dir = f'{home}/project/synteticXRF'
         else:
             self.root_dir = f'C:\\Users\XRAYLab\rosario-sim'
-        self.work_dir = os.path.join(self.root_dir,'xsimspe')
+        self.work_dir = os.path.join(self.root_dir,'Xsim')
         self.input_files_dir = os.path.join(self.root_dir, 'input_files')
         self.ofname_is_set = False
         self.ifname_is_set = False
@@ -48,9 +48,12 @@ class XinputFile():
         self.d_sample_detector = 1.5
         self.d_sample_source = 6
     
+    def set_outdata_dir(self, outdata_dir):
+            self.data_dir = outdata_dir
+        
     def set_root_dir(self, root_dir):
         self.root_dir = root_dir
-        self.work_dir = os.path.join(self.root_dir,'xsimspe')
+        self.work_dir = os.path.join(self.root_dir,'Xsim')
         self.input_files_dir = os.path.join(self.root_dir, 'input_files')
         os.makedirs(self.input_files_dir, exist_ok = True)
         self.data_dir = os.path.join(self.root_dir, 'outdata')

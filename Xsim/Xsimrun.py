@@ -73,7 +73,6 @@ def random_weight_fraction2(num_elements, N = 1):
 
 if __name__ == "__main__":
     print(time.ctime())
-    root_dir = os.path.join(os.getenv('HOME'), 'xmimsim')
     ifile = xif()
     ifile.live_time = 0.3 * 0.35
     slit_size = 0.001
@@ -86,13 +85,13 @@ if __name__ == "__main__":
     ifile.set_root_dir(f'/home/rosario/xmimsim/syntetic/{timestamp}')
     #ifile.set_ref_lay_thickness(0.00015)
     #elements_list = read_elements(os.path.join(root_dir,'xsimspe','elements.txt'),xm())
-    ref_lay_thickness_upper_bound =  2.0e-05
-    hydro_thickness_bounds= [0.001, 0.0035]
+    ref_lay_thickness_upper_bound =  4.5e-05
+    hydro_thickness_bounds= [0.0015, 0.004]
     #loop on reference layer elements
     #for ref_lay_elements in elements_list:
         #ifile.ref_lay_elements = ref_lay_elements
-    ifile.add_ref_layer_element('Co')
-    ifile.add_ref_layer_element('Fe')
+    ifile.add_ref_layer_element('Cu')
+    ifile.add_ref_layer_element('Zn')
     #ifile.add_ref_layer_element('Ti')
     #loop on weight fractions
     #elem_num = len(ifile.ref_lay_elements)
@@ -103,9 +102,9 @@ if __name__ == "__main__":
         #ifile.ref_lay_thickness = round(rlthick, 6)
     #for wf in wfractions:
     for i in range(100):
-        Fewf = round(80 + np.random.rand() * 20, 2)
-        Cowf = round(100 - Fewf, 2)
-        ifile.ref_lay_wfractions = np.array([Cowf, Fewf])
+        Cuwf = round(90 + np.random.rand() * 10, 2)
+        Znwf = round(100 - Cuwf, 2)
+        ifile.ref_lay_wfractions = np.array([Cuwf, Znwf])
         ifile.hydrocerussite_thickness = round(hydro_thickness_bounds[0] + np.random.rand() * (hydro_thickness_bounds[1] - hydro_thickness_bounds[0]), 6)
         ifile.ref_lay_thickness = round(np.random.rand() * ref_lay_thickness_upper_bound, 6)
         input_file = ifile.gen_input_file()
